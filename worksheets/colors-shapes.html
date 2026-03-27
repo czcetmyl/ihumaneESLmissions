@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colors & Shapes Activity — IHM Grade 2 & 3</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',Arial,sans-serif;background:#f5f3ff;color:#1a1a1a;padding:24px;}
+    .print-btn{display:block;margin:0 auto 20px;padding:12px 32px;background:#7c3aed;color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;}
+    .print-btn:hover{background:#6d28d9;}
+    .worksheet{max-width:780px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.10);overflow:hidden;}
+    .ws-header{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;padding:28px 36px 22px;text-align:center;}
+    .ws-org{font-size:0.82rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:6px;}
+    .ws-title{font-size:1.9rem;font-weight:900;margin-bottom:8px;}
+    .ws-sub{font-size:0.95rem;opacity:0.88;}
+    .ws-info{background:#fff;border-radius:10px;margin:16px 36px 0;padding:12px 20px;display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+    .ws-info span{font-size:0.92rem;color:#7c3aed;font-weight:700;}
+    .ws-info span u{font-weight:400;color:#555;display:inline-block;min-width:120px;border-bottom:2px solid #aaa;}
+    .body{padding:28px 36px;}
+    .section{margin-bottom:32px;}
+    .section-title{font-size:1.1rem;font-weight:900;color:#6d28d9;margin-bottom:14px;padding:8px 16px;background:#ede9fe;border-radius:8px;border-left:5px solid #7c3aed;}
+    .shapes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;text-align:center;}
+    .shape-cell{background:#faf5ff;border:2px solid #e9d5ff;border-radius:10px;padding:16px 8px;}
+    .shape-icon{font-size:3rem;margin-bottom:8px;}
+    .shape-name-line{border-bottom:2px solid #c4b5fd;margin:6px 4px;min-height:28px;}
+    .shape-color-line{border-bottom:2px solid #c4b5fd;margin:4px 4px;min-height:24px;font-size:0.8rem;color:#aaa;padding-top:2px;}
+    .color-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .color-row{display:flex;align-items:center;gap:14px;padding:10px 14px;background:#faf5ff;border:1.5px solid #e9d5ff;border-radius:8px;}
+    .color-swatch{width:40px;height:40px;border-radius:8px;border:2px solid #ddd;flex-shrink:0;}
+    .color-word{font-size:1.1rem;font-weight:800;flex:1;}
+    .color-match-line{width:60px;border-bottom:2px dotted #aaa;}
+    .draw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .draw-cell{border:2.5px dashed #c4b5fd;border-radius:12px;min-height:120px;display:flex;flex-direction:column;}
+    .draw-label{background:#ede9fe;padding:8px 12px;font-weight:800;font-size:0.9rem;color:#6d28d9;border-radius:8px 8px 0 0;}
+    .draw-area{flex:1;padding:8px;}
+    .ws-footer{background:#faf5ff;border-top:2px dashed #e9d5ff;padding:18px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .stars-box{font-size:1rem;font-weight:700;color:#7c3aed;}
+    .stars{font-size:1.4rem;letter-spacing:4px;}
+    @media print{body{background:#fff;padding:0;}.print-btn{display:none;}.worksheet{box-shadow:none;border-radius:0;}@page{margin:15mm;}}
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+<div class="worksheet">
+  <div class="ws-header">
+    <div class="ws-org">🌍 International Humanitarian Missions — English Program</div>
+    <h1 class="ws-title">Colors &amp; Shapes Activity</h1>
+    <div class="ws-sub">Grade 2 &amp; 3 · Color, Name, and Draw!</div>
+  </div>
+  <div class="ws-info">
+    <span>Name: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+    <span>Date: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+    <span>Grade: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+  </div>
+  <div class="body">
+    <div class="section">
+      <div class="section-title">🎨 Activity 1 — Color Each Shape and Write Its Name</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Color the shape, then write its name and color on the lines.</p>
+      <div class="shapes-grid">
+        <div class="shape-cell"><div class="shape-icon">⬤</div><div style="font-size:0.78rem;color:#aaa;">Name:</div><div class="shape-name-line"></div><div style="font-size:0.78rem;color:#aaa;margin-top:4px;">Color:</div><div class="shape-color-line"></div></div>
+        <div class="shape-cell"><div class="shape-icon">⬛</div><div style="font-size:0.78rem;color:#aaa;">Name:</div><div class="shape-name-line"></div><div style="font-size:0.78rem;color:#aaa;margin-top:4px;">Color:</div><div class="shape-color-line"></div></div>
+        <div class="shape-cell"><div class="shape-icon">🔺</div><div style="font-size:0.78rem;color:#aaa;">Name:</div><div class="shape-name-line"></div><div style="font-size:0.78rem;color:#aaa;margin-top:4px;">Color:</div><div class="shape-color-line"></div></div>
+        <div class="shape-cell"><div class="shape-icon">▬</div><div style="font-size:0.78rem;color:#aaa;">Name:</div><div class="shape-name-line"></div><div style="font-size:0.78rem;color:#aaa;margin-top:4px;">Color:</div><div class="shape-color-line"></div></div>
+        <div class="shape-cell"><div class="shape-icon">⭐</div><div style="font-size:0.78rem;color:#aaa;">Name:</div><div class="shape-name-line"></div><div style="font-size:0.78rem;color:#aaa;margin-top:4px;">Color:</div><div class="shape-color-line"></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">🌈 Activity 2 — Match the Color Word to the Color Swatch</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Draw a line from the word to its matching color box.</p>
+      <div class="color-grid">
+        <div class="color-row"><div class="color-swatch" style="background:#ef4444;"></div><div class="color-word">RED</div><div class="color-match-line"></div></div>
+        <div class="color-row"><div class="color-swatch" style="background:#3b82f6;"></div><div class="color-word">BLUE</div><div class="color-match-line"></div></div>
+        <div class="color-row"><div class="color-swatch" style="background:#22c55e;"></div><div class="color-word">GREEN</div><div class="color-match-line"></div></div>
+        <div class="color-row"><div class="color-swatch" style="background:#eab308;"></div><div class="color-word">YELLOW</div><div class="color-match-line"></div></div>
+        <div class="color-row"><div class="color-swatch" style="background:#f97316;"></div><div class="color-word">ORANGE</div><div class="color-match-line"></div></div>
+        <div class="color-row"><div class="color-swatch" style="background:#a855f7;"></div><div class="color-word">PURPLE</div><div class="color-match-line"></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">✏️ Activity 3 — Draw and Color!</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Draw something in each box and color it the right color!</p>
+      <div class="draw-grid">
+        <div class="draw-cell"><div class="draw-label">🔴 Draw something RED</div><div class="draw-area"></div></div>
+        <div class="draw-cell"><div class="draw-label">🔵 Draw something BLUE</div><div class="draw-area"></div></div>
+        <div class="draw-cell"><div class="draw-label">🟢 Draw something GREEN</div><div class="draw-area"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ws-footer">
+    <div class="stars-box">How did I do? <span class="stars">⭐⭐⭐⭐⭐</span><br/><small style="font-weight:400;color:#555;">(circle your stars!)</small></div>
+    <div style="font-size:0.8rem;color:#aaa;">IHM English Program · Grade 2 &amp; 3 · Colors &amp; Shapes</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telling the Time — IHM Grade 3</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',Arial,sans-serif;background:#f8fafc;color:#1a1a1a;padding:24px;}
+    .print-btn{display:block;margin:0 auto 20px;padding:12px 32px;background:#0ea5e9;color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;}
+    .print-btn:hover{background:#0284c7;}
+    .worksheet{max-width:780px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.10);overflow:hidden;}
+    .ws-header{background:linear-gradient(135deg,#0ea5e9,#38bdf8);color:#fff;padding:28px 36px 22px;text-align:center;}
+    .ws-org{font-size:0.82rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:6px;}
+    .ws-title{font-size:1.9rem;font-weight:900;margin-bottom:8px;}
+    .ws-sub{font-size:0.95rem;opacity:0.88;}
+    .ws-info{background:#fff;border-radius:10px;margin:16px 36px 0;padding:12px 20px;display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+    .ws-info span{font-size:0.92rem;color:#0ea5e9;font-weight:700;}
+    .ws-info span u{font-weight:400;color:#555;display:inline-block;min-width:120px;border-bottom:2px solid #aaa;}
+    .body{padding:28px 36px;}
+    .section{margin-bottom:32px;}
+    .section-title{font-size:1.1rem;font-weight:900;color:#0284c7;margin-bottom:14px;padding:8px 16px;background:#e0f2fe;border-radius:8px;border-left:5px solid #0ea5e9;}
+    .clocks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+    .clock-cell{text-align:center;background:#f0f9ff;border:2px solid #bae6fd;border-radius:12px;padding:16px 10px;}
+    .clock-face{width:90px;height:90px;border-radius:50%;border:4px solid #0ea5e9;margin:0 auto 10px;background:#fff;position:relative;display:flex;align-items:center;justify-content:center;}
+    .clock-face svg{width:80px;height:80px;}
+    .clock-time{font-size:0.95rem;font-weight:800;color:#0284c7;margin-bottom:6px;}
+    .clock-write{border-bottom:2px solid #7dd3fc;margin:0 8px;min-height:28px;font-size:0.82rem;color:#aaa;padding-top:2px;}
+    .read-cell{background:#f0f9ff;border:2px solid #bae6fd;border-radius:12px;padding:16px 10px;text-align:center;}
+    .read-time{font-size:0.88rem;color:#aaa;margin-bottom:6px;}
+    .schedule-row{background:#f0f9ff;border:2px solid #bae6fd;border-radius:10px;padding:12px 18px;margin-bottom:10px;font-size:1rem;line-height:2.2;}
+    .sched-blank{display:inline-block;border-bottom:2px solid #0ea5e9;min-width:120px;vertical-align:bottom;}
+    .ws-footer{background:#f0f9ff;border-top:2px dashed #bae6fd;padding:18px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .stars-box{font-size:1rem;font-weight:700;color:#0ea5e9;}
+    .stars{font-size:1.4rem;letter-spacing:4px;}
+    @media print{body{background:#fff;padding:0;}.print-btn{display:none;}.worksheet{box-shadow:none;border-radius:0;}@page{margin:15mm;}}
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+<div class="worksheet">
+  <div class="ws-header">
+    <div class="ws-org">🌍 International Humanitarian Missions — English Program</div>
+    <h1 class="ws-title">Telling the Time</h1>
+    <div class="ws-sub">Grade 3 · What Time Is It?</div>
+  </div>
+  <div class="ws-info">
+    <span>Name: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+    <span>Date: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+    <span>Grade: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+  </div>
+  <div class="body">
+    <div class="section">
+      <div class="section-title">🕐 Activity 1 — Draw the Hands on the Clock</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Draw the hour hand (short) and minute hand (long) to show the time.</p>
+      <div class="clocks-grid">
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 3:00</div><div class="clock-write"></div>
+        </div>
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 7:00</div><div class="clock-write"></div>
+        </div>
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 10:30</div><div class="clock-write"></div>
+        </div>
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 1:00</div><div class="clock-write"></div>
+        </div>
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 4:30</div><div class="clock-write"></div>
+        </div>
+        <div class="clock-cell">
+          <div class="clock-face"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text></svg></div>
+          <div class="clock-time">Show: 8:00</div><div class="clock-write"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">⏰ Activity 2 — Write the Time in Words</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Write the time in words. Example: 3:00 → <em>"It is three o'clock."</em></p>
+      <div class="clocks-grid">
+        <div class="read-cell"><div class="clock-face" style="margin-bottom:8px;"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text><line x1="40" y1="40" x2="40" y2="14" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="40" x2="64" y2="40" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></div><div class="clock-write"></div></div>
+        <div class="read-cell"><div class="clock-face" style="margin-bottom:8px;"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text><line x1="40" y1="40" x2="40" y2="66" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="40" x2="40" y2="14" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></div><div class="clock-write"></div></div>
+        <div class="read-cell"><div class="clock-face" style="margin-bottom:8px;"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fff" stroke="#0ea5e9" stroke-width="3"/><circle cx="40" cy="40" r="3" fill="#0ea5e9"/><text x="40" y="14" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">12</text><text x="68" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">3</text><text x="40" y="72" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">6</text><text x="12" y="44" text-anchor="middle" font-size="9" font-weight="bold" fill="#555">9</text><line x1="40" y1="40" x2="16" y2="40" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="40" x2="40" y2="14" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></div><div class="clock-write"></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">📅 Activity 3 — Complete My Daily Schedule</div>
+      <p style="font-size:0.88rem;color:#555;margin-bottom:14px;">Fill in the blanks with a time from your day.</p>
+      <div class="schedule-row">🌅 I wake up at <span class="sched-blank"></span> every morning.</div>
+      <div class="schedule-row">🏫 School starts at <span class="sched-blank"></span>.</div>
+      <div class="schedule-row">🍱 I eat lunch at <span class="sched-blank"></span>.</div>
+      <div class="schedule-row">📚 I study English at <span class="sched-blank"></span>.</div>
+      <div class="schedule-row">🌙 I go to sleep at <span class="sched-blank"></span>.</div>
+    </div>
+  </div>
+  <div class="ws-footer">
+    <div class="stars-box">How did I do? <span class="stars">⭐⭐⭐⭐⭐</span><br/><small style="font-weight:400;color:#555;">(circle your stars!)</small></div>
+    <div style="font-size:0.8rem;color:#aaa;">IHM English Program · Grade 3 · Telling the Time</div>
+  </div>
+</div>
+</body>
+</html>
