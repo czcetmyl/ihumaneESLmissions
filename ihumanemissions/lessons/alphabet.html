@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alphabet Lesson — IHM English</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#0b4d2c,#1b7a4a,#2d9b68);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px;}
+    .header{text-align:center;color:#fff;margin-bottom:28px;}
+    .header small{font-size:0.8rem;opacity:0.75;letter-spacing:0.1em;text-transform:uppercase;}
+    .header h1{font-size:1.6rem;font-weight:900;margin:4px 0;}
+    .card{background:#fff;border-radius:24px;padding:40px 32px;max-width:480px;width:100%;text-align:center;box-shadow:0 16px 48px rgba(0,0,0,0.25);position:relative;}
+    .progress{font-size:0.82rem;color:#aaa;margin-bottom:20px;font-weight:700;}
+    .letter-display{font-size:6rem;font-weight:900;color:#1b7a4a;line-height:1;animation:bounce 0.5s ease;}
+    @keyframes bounce{0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+    .letter-lower{font-size:3.5rem;font-weight:800;color:#2d9b68;margin:4px 0 16px;}
+    .letter-word{font-size:1.5rem;font-weight:800;color:#333;margin-bottom:6px;}
+    .letter-emoji{font-size:3rem;margin-bottom:20px;}
+    .nav{display:flex;gap:14px;justify-content:center;margin-top:8px;}
+    .btn{padding:12px 28px;border:none;border-radius:50px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+    .btn-prev{background:#e4f5ec;color:#1b7a4a;}
+    .btn-next{background:#1b7a4a;color:#fff;}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.15);}
+    .btn-quiz{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;width:100%;margin-top:16px;font-size:1rem;}
+    /* Quiz */
+    .quiz-section{display:none;margin-top:24px;border-top:2px dashed #d1fae5;padding-top:20px;}
+    .quiz-letter{font-size:5rem;font-weight:900;color:#1b7a4a;margin-bottom:12px;}
+    .quiz-input{width:100%;padding:14px;font-size:1.3rem;font-weight:800;text-align:center;border:3px solid #d1fae5;border-radius:12px;font-family:inherit;outline:none;transition:border-color 0.2s;}
+    .quiz-input:focus{border-color:#1b7a4a;}
+    .quiz-feedback{font-size:1rem;font-weight:800;margin-top:10px;min-height:28px;}
+    .correct{color:#059669;}
+    .wrong{color:#e53e3e;}
+    .dot-row{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+    .dot{width:10px;height:10px;border-radius:50%;background:#d1fae5;transition:background 0.3s;}
+    .dot.done{background:#1b7a4a;}
+    .dot.current{background:#f59e0b;transform:scale(1.3);}
+  </style>
+</head>
+<body>
+<div class="header">
+  <small>🌍 International Humanitarian Missions — English Program</small>
+  <h1>Alphabet Lesson A–Z</h1>
+</div>
+
+<div class="card">
+  <div class="progress" id="progress">Letter 1 of 26</div>
+  <div class="letter-display" id="upperLetter">A</div>
+  <div class="letter-lower" id="lowerLetter">a</div>
+  <div class="letter-emoji" id="letterEmoji">🍎</div>
+  <div class="letter-word" id="letterWord">A is for Apple</div>
+
+  <div class="dot-row" id="dotRow"></div>
+
+  <div class="nav" style="margin-top:20px;">
+    <button class="btn btn-prev" onclick="prev()">← Previous</button>
+    <button class="btn btn-next" onclick="next()" id="nextBtn">Next →</button>
+  </div>
+  <button class="btn btn-quiz" id="quizBtn" style="display:none;" onclick="startQuiz()">🎯 Take the Quiz!</button>
+
+  <!-- Quiz -->
+  <div class="quiz-section" id="quizSection">
+    <div style="font-size:0.9rem;font-weight:800;color:#555;margin-bottom:12px;">What letter is this?</div>
+    <div class="quiz-letter" id="quizLetter"></div>
+    <input class="quiz-input" id="quizInput" maxlength="1" placeholder="Type the letter..." oninput="checkQuiz()"/>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <button class="btn btn-next" onclick="nextQuiz()" style="margin-top:12px;">Next Question →</button>
+  </div>
+</div>
+
+<script>
+const letters = [
+  {u:'A',l:'a',e:'🍎',w:'A is for Apple'},
+  {u:'B',l:'b',e:'🍌',w:'B is for Banana'},
+  {u:'C',l:'c',e:'🐱',w:'C is for Cat'},
+  {u:'D',l:'d',e:'🐶',w:'D is for Dog'},
+  {u:'E',l:'e',e:'🥚',w:'E is for Egg'},
+  {u:'F',l:'f',e:'🐟',w:'F is for Fish'},
+  {u:'G',l:'g',e:'🍇',w:'G is for Grapes'},
+  {u:'H',l:'h',e:'🏠',w:'H is for House'},
+  {u:'I',l:'i',e:'🍦',w:'I is for Ice cream'},
+  {u:'J',l:'j',e:'🌶️',w:'J is for Jalapeño'},
+  {u:'K',l:'k',e:'🪁',w:'K is for Kite'},
+  {u:'L',l:'l',e:'🦁',w:'L is for Lion'},
+  {u:'M',l:'m',e:'🐒',w:'M is for Monkey'},
+  {u:'N',l:'n',e:'🌙',w:'N is for Night'},
+  {u:'O',l:'o',e:'🍊',w:'O is for Orange'},
+  {u:'P',l:'p',e:'🐧',w:'P is for Penguin'},
+  {u:'Q',l:'q',e:'👸',w:'Q is for Queen'},
+  {u:'R',l:'r',e:'🌈',w:'R is for Rainbow'},
+  {u:'S',l:'s',e:'☀️',w:'S is for Sun'},
+  {u:'T',l:'t',e:'🐢',w:'T is for Turtle'},
+  {u:'U',l:'u',e:'☂️',w:'U is for Umbrella'},
+  {u:'V',l:'v',e:'🌸',w:'V is for Violet'},
+  {u:'W',l:'w',e:'🌊',w:'W is for Water'},
+  {u:'X',l:'x',e:'🎸',w:'X is for Xylophone'},
+  {u:'Y',l:'y',e:'🟡',w:'Y is for Yellow'},
+  {u:'Z',l:'z',e:'🦓',w:'Z is for Zebra'}
+];
+let current = 0;
+
+function buildDots(){
+  const row = document.getElementById('dotRow');
+  row.innerHTML = '';
+  letters.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className='dot'+(i===current?' current':i<current?' done':'');
+    row.appendChild(d);
+  });
+}
+function show(){
+  const l = letters[current];
+  document.getElementById('upperLetter').textContent = l.u;
+  document.getElementById('lowerLetter').textContent = l.l;
+  document.getElementById('letterEmoji').textContent = l.e;
+  document.getElementById('letterWord').textContent = l.w;
+  document.getElementById('progress').textContent = `Letter ${current+1} of 26`;
+  document.getElementById('upperLetter').style.animation='none';
+  void document.getElementById('upperLetter').offsetWidth;
+  document.getElementById('upperLetter').style.animation='bounce 0.5s ease';
+  document.getElementById('nextBtn').textContent = current===25 ? '🎯 Quiz Time!' : 'Next →';
+  document.getElementById('quizBtn').style.display = current===25 ? 'block' : 'none';
+  buildDots();
+}
+function next(){ if(current<25){current++;show();} else { startQuiz(); } }
+function prev(){ if(current>0){current--;show();} }
+
+// Quiz
+let quizIndex=0, score=0;
+const quizOrder = [...letters].sort(()=>Math.random()-0.5);
+function startQuiz(){
+  document.getElementById('quizSection').style.display='block';
+  document.getElementById('quizSection').scrollIntoView({behavior:'smooth'});
+  showQuizQ();
+}
+function showQuizQ(){
+  if(quizIndex>=10){ document.getElementById('quizSection').innerHTML=`<div style="font-size:1.2rem;font-weight:900;color:#1b7a4a;padding:16px;">🎉 Quiz done! Score: ${score}/10<br><span style="font-size:0.9rem;color:#555;">Great job learning the alphabet!</span></div>`; return; }
+  const q = quizOrder[quizIndex];
+  document.getElementById('quizLetter').textContent = q.u+' '+q.e;
+  document.getElementById('quizInput').value='';
+  document.getElementById('quizFeedback').textContent='';
+}
+function checkQuiz(){
+  const val = document.getElementById('quizInput').value.toUpperCase();
+  const q = quizOrder[quizIndex];
+  if(val === q.u){ document.getElementById('quizFeedback').textContent='✅ Correct! Well done!'; document.getElementById('quizFeedback').className='quiz-feedback correct'; score++; }
+  else if(val){ document.getElementById('quizFeedback').textContent=`❌ Try again! The letter is "${q.u}"`; document.getElementById('quizFeedback').className='quiz-feedback wrong'; }
+}
+function nextQuiz(){ quizIndex++; showQuizQ(); }
+
+show();
+</script>
+</body>
+</html>

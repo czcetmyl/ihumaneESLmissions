@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colors Lesson — IHM English</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#7c3aed,#a78bfa,#c4b5fd);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px;}
+    .header{text-align:center;color:#fff;margin-bottom:24px;}
+    .header small{font-size:0.8rem;opacity:0.8;letter-spacing:0.1em;text-transform:uppercase;}
+    .header h1{font-size:1.6rem;font-weight:900;margin:4px 0;}
+    .scoreboard{background:rgba(255,255,255,0.2);border-radius:50px;padding:8px 24px;color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:20px;backdrop-filter:blur(8px);}
+    .card{background:#fff;border-radius:24px;padding:36px 28px;max-width:520px;width:100%;text-align:center;box-shadow:0 16px 48px rgba(0,0,0,0.2);}
+    /* Learn phase */
+    .learn-phase{display:block;}
+    .color-circle{width:160px;height:160px;border-radius:50%;margin:0 auto 18px;cursor:pointer;border:6px solid rgba(255,255,255,0.8);box-shadow:0 8px 30px rgba(0,0,0,0.2);transition:transform 0.2s;animation:popIn 0.5s ease;}
+    @keyframes popIn{from{transform:scale(0.3);opacity:0;}60%{transform:scale(1.1);}to{transform:scale(1);opacity:1;}}
+    .color-circle:hover{transform:scale(1.06);}
+    .color-name{font-size:2.2rem;font-weight:900;color:#1a1a1a;margin-bottom:6px;}
+    .color-spell{font-size:1rem;font-weight:700;color:#555;letter-spacing:6px;margin-bottom:18px;}
+    .color-example{font-size:1rem;color:#777;margin-bottom:20px;}
+    .color-nav{display:flex;gap:14px;justify-content:center;}
+    .btn{padding:12px 26px;border:none;border-radius:50px;font-size:0.95rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.15);}
+    .btn-prev{background:#ede9fe;color:#7c3aed;}
+    .btn-next{background:#7c3aed;color:#fff;}
+    .btn-quiz-start{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;width:100%;margin-top:16px;font-size:1rem;padding:14px;}
+    .progress{font-size:0.82rem;color:#aaa;font-weight:700;margin-bottom:14px;}
+    /* Quiz phase */
+    .quiz-phase{display:none;}
+    .quiz-swatch{width:120px;height:120px;border-radius:16px;margin:0 auto 20px;border:4px solid rgba(0,0,0,0.08);box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+    .quiz-question{font-size:1.1rem;font-weight:800;color:#333;margin-bottom:16px;}
+    .quiz-choices{display:flex;flex-direction:column;gap:10px;}
+    .choice-btn{padding:14px;border:3px solid #e9d5ff;border-radius:12px;font-size:1.1rem;font-weight:800;cursor:pointer;background:#faf5ff;font-family:inherit;transition:all 0.2s;}
+    .choice-btn:hover{border-color:#7c3aed;background:#ede9fe;}
+    .choice-btn.correct-ans{background:#d1fae5;border-color:#059669;color:#047857;}
+    .choice-btn.wrong-ans{background:#fee2e2;border-color:#e53e3e;color:#b91c1c;}
+    .quiz-score{font-size:1.3rem;font-weight:900;color:#7c3aed;margin-top:14px;}
+    .dot-row{display:flex;gap:6px;justify-content:center;margin:14px 0;}
+    .dot{width:10px;height:10px;border-radius:50%;background:#e9d5ff;transition:background 0.3s;}
+    .dot.done{background:#7c3aed;}
+    .dot.current{background:#f59e0b;transform:scale(1.4);}
+  </style>
+</head>
+<body>
+<div class="header">
+  <small>🌍 International Humanitarian Missions — English Program</small>
+  <h1>Colors in English 🎨</h1>
+</div>
+<div class="scoreboard" id="scoreboard">Score: 0 / 0</div>
+
+<div class="card">
+  <!-- Learn Phase -->
+  <div class="learn-phase" id="learnPhase">
+    <div class="progress" id="learnProgress">Color 1 of 8</div>
+    <div class="color-circle" id="colorCircle" onclick="spellOut()"></div>
+    <div class="color-name" id="colorName">Red</div>
+    <div class="color-spell" id="colorSpell">R · E · D</div>
+    <div class="color-example" id="colorExample">🍎 Apples are red. 🌹 Roses are red.</div>
+    <div class="dot-row" id="dotRow"></div>
+    <div class="color-nav">
+      <button class="btn btn-prev" onclick="prevColor()">← Prev</button>
+      <button class="btn btn-next" onclick="nextColor()" id="learnNext">Next →</button>
+    </div>
+    <button class="btn btn-quiz-start" id="quizStartBtn" style="display:none;" onclick="startQuiz()">🎯 Start the Color Quiz!</button>
+  </div>
+
+  <!-- Quiz Phase -->
+  <div class="quiz-phase" id="quizPhase">
+    <div class="progress" id="quizProgress">Question 1 of 8</div>
+    <div class="quiz-swatch" id="quizSwatch"></div>
+    <div class="quiz-question">What color is this?</div>
+    <div class="quiz-choices" id="quizChoices"></div>
+    <div class="quiz-score" id="quizScore" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+const colors=[
+  {name:'Red',hex:'#ef4444',spell:'R · E · D',ex:'🍎 Apples are red. 🌹 Roses are red.'},
+  {name:'Blue',hex:'#3b82f6',spell:'B · L · U · E',ex:'🌊 The sea is blue. 🦋 Some butterflies are blue.'},
+  {name:'Green',hex:'#22c55e',spell:'G · R · E · E · N',ex:'🌿 Leaves are green. 🐸 Frogs are green.'},
+  {name:'Yellow',hex:'#eab308',spell:'Y · E · L · L · O · W',ex:'☀️ The sun is yellow. 🌻 Sunflowers are yellow.'},
+  {name:'Orange',hex:'#f97316',spell:'O · R · A · N · G · E',ex:'🍊 Oranges are orange. 🎃 Pumpkins are orange.'},
+  {name:'Purple',hex:'#a855f7',spell:'P · U · R · P · L · E',ex:'🍇 Grapes are purple. 🌸 Some flowers are purple.'},
+  {name:'Pink',hex:'#ec4899',spell:'P · I · N · K',ex:'🌺 Some flowers are pink. 🐷 Pigs are pink.'},
+  {name:'White',hex:'#f8fafc',spell:'W · H · I · T · E',ex:'☁️ Clouds are white. ⬜ Paper is white.'}
+];
+let learnIdx=0, quizIdx=0, score=0, quizOrder=[];
+
+function buildDots(){
+  const row=document.getElementById('dotRow'); row.innerHTML='';
+  colors.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===learnIdx?' current':i<learnIdx?' done':'');row.appendChild(d);});
+}
+function showColor(){
+  const c=colors[learnIdx];
+  document.getElementById('colorCircle').style.background=c.hex;
+  document.getElementById('colorCircle').style.animation='none';
+  void document.getElementById('colorCircle').offsetWidth;
+  document.getElementById('colorCircle').style.animation='popIn 0.5s ease';
+  document.getElementById('colorName').textContent=c.name;
+  document.getElementById('colorSpell').textContent=c.spell;
+  document.getElementById('colorExample').textContent=c.ex;
+  document.getElementById('learnProgress').textContent=`Color ${learnIdx+1} of 8`;
+  document.getElementById('learnNext').textContent=learnIdx===7?'🎯 Take Quiz!':'Next →';
+  document.getElementById('quizStartBtn').style.display=learnIdx===7?'block':'none';
+  buildDots();
+}
+function spellOut(){
+  const name=colors[learnIdx].name;
+  document.getElementById('colorSpell').textContent='';
+  let i=0;
+  const interval=setInterval(()=>{
+    if(i<name.length){document.getElementById('colorSpell').textContent+=name[i]+' ';i++;}
+    else{clearInterval(interval);document.getElementById('colorSpell').textContent=colors[learnIdx].spell;}
+  },200);
+}
+function nextColor(){if(learnIdx<7){learnIdx++;showColor();}else{startQuiz();}}
+function prevColor(){if(learnIdx>0){learnIdx--;showColor();}}
+
+function startQuiz(){
+  quizOrder=[...colors].sort(()=>Math.random()-0.5);
+  quizIdx=0; score=0;
+  document.getElementById('learnPhase').style.display='none';
+  document.getElementById('quizPhase').style.display='block';
+  showQuizQ();
+}
+function showQuizQ(){
+  if(quizIdx>=8){document.getElementById('quizScore').style.display='block';document.getElementById('quizScore').textContent=`🎉 Quiz done! Score: ${score}/8`;document.getElementById('quizChoices').innerHTML='';return;}
+  const q=quizOrder[quizIdx];
+  document.getElementById('quizProgress').textContent=`Question ${quizIdx+1} of 8`;
+  document.getElementById('quizSwatch').style.background=q.hex;
+  document.getElementById('scoreboard').textContent=`Score: ${score} / ${quizIdx}`;
+  // 3 choices: correct + 2 random wrong
+  const wrongs=colors.filter(c=>c.name!==q.name).sort(()=>Math.random()-0.5).slice(0,2);
+  const choices=[q,...wrongs].sort(()=>Math.random()-0.5);
+  const div=document.getElementById('quizChoices'); div.innerHTML='';
+  choices.forEach(ch=>{
+    const b=document.createElement('button');
+    b.className='choice-btn'; b.textContent=ch.name;
+    b.onclick=()=>answerQuiz(b,ch.name===q.name,q.name,div);
+    div.appendChild(b);
+  });
+}
+function answerQuiz(btn,isCorrect,correct,container){
+  Array.from(container.children).forEach(b=>b.onclick=null);
+  if(isCorrect){btn.classList.add('correct-ans');score++;}
+  else{btn.classList.add('wrong-ans');Array.from(container.children).forEach(b=>{if(b.textContent===correct)b.classList.add('correct-ans');});}
+  document.getElementById('scoreboard').textContent=`Score: ${score} / ${quizIdx+1}`;
+  setTimeout(()=>{quizIdx++;showQuizQ();},900);
+}
+showColor();
+</script>
+</body>
+</html>
